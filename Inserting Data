@@ -1,0 +1,45 @@
+import java.sql.Connection;  
+import java.sql.DriverManager;  
+import java.sql.PreparedStatement;  
+import java.sql.SQLException;  
+   
+public class InsertRecords {  
+   
+    private Connection connect() {  
+        // SQLite connection string  
+        String url = "jdbc:sqlite:C://sqlite/db/movies.db";  
+        Connection conn = null;  
+        try {  
+            conn = DriverManager.getConnection(url);  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+        return conn;  
+    }  
+   
+  
+    public void insert(String name, double capacity) {  
+        String sql = "INSERT INTO movies(NAME,Actor,Actress,Director_Name,Year) VALUES(?,?,?,?,?)";  
+   
+        try{  
+            Connection conn = this.connect();  
+            PreparedStatement pstmt = conn.prepareStatement(sql);  
+            pstmt.setString(1, name);  
+            pstmt.setDouble(2, capacity);  
+            pstmt.executeUpdate();  
+        } catch (SQLException e) {  
+            System.out.println(e.getMessage());  
+        }  
+    }  
+   
+    public static void main(String[] args) {  
+   
+        InsertRecords app = new InsertRecords();    
+        app.insert("Shang-Chi and the Legend of the Ten Rings","Simu Liu","Awkwafina","Destin Daniel Cretton",2021);  
+        app.insert("Dune","Timothée Chalamet","Rebecca Ferguson","Denis Villeneuve",2021);  
+        app.insert("Spider-Man: Homecoming","Tom Holland","Zendaya","Jon Watts",2017);  
+        app.insert("Spider-Man: Far From Home","Tom Holland","Zendaya","Jon Watts",2019)); 
+        app.insert("Spider-Man: No Way Home","Tom Holland","Zendaya","Jon Watts",2021); 
+    }  
+   
+}  
