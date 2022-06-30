@@ -7,7 +7,7 @@ public class CreateTable {
    
     public static void createNewTable() {  
         // SQLite connection string  
-        String url = "jdbc:sqlite:C://sqlite/SSSIT.db";  
+        String url = "jdbc:sqlite:C://sqlite/db/dabaseMovies.db";  
           
         // SQL statement for creating a new table  
         String sql = "CREATE TABLE IF NOT EXISTS movies (\n"  
