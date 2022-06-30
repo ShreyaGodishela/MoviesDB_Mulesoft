@@ -7,7 +7,7 @@ public class InsertRecords {
    
     private Connection connect() {  
         // SQLite connection string  
-        String url = "jdbc:sqlite:C://sqlite/db/movies.db";  
+        String url = "jdbc:sqlite:C://sqlite/db/dabaseMovies.db";  
         Connection conn = null;  
         try {  
             conn = DriverManager.getConnection(url);  
